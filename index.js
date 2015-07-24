@@ -27,7 +27,7 @@ module.exports = function inject(opt) {
 
   var snippet = snippetBuilder(opt.snippet);
 
-
+  var runAll = opt.runAll || false;
 
   // helper functions
   var regex = (function() {
@@ -64,11 +64,15 @@ module.exports = function inject(opt) {
   function snap(body) {
     var _body = body;
     rules.some(function(rule) {
-      if (rule.match.test(body)) {
-        _body = body.replace(rule.match, function(w) {
-          return rule.fn(w, snippet);
+      if (rule.match.test(_body)) {
+        _body = _body.replace(rule.match, function(w) {
+          return rule.fn(w, rule.snippet|| snippet);
         });
-        return true;
+        if (runAll === false) {
+          return true;
+        } else {
+          return false;
+        }
       }
       return false;
     });
@@ -96,7 +100,6 @@ module.exports = function inject(opt) {
   // middleware
   return function inject(req, res, next) {
     if (res.inject) return next();
-    res.inject = true;
 
     var writeHead = res.writeHead;
     var write = res.write;
