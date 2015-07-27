@@ -2,8 +2,6 @@ connect-inject
 ==================
 connect middleware for adding any script to the response, this is a forked version of connect-livereload.
 
-This is a slightly modified version of [connect-livereload](https://github.com/intesso/connect-livereload) all the credits go to  the author.
-
 For further documentation refer to the author's repo [connect-livereload](https://github.com/intesso/connect-livereload).
 
 install
@@ -137,9 +135,10 @@ You can also do multiple injections by defining a snippet inside of a rule and s
 }
 ```
 
-credits
+Contributors
 =======
-This is a slightly modified version of [connect-livereload](https://github.com/intesso/connect-livereload) all the credits go to the author.
+[iridio](https://github.com/iridio), [dorgan](https://github.com/dorgan)
+This is a slightly modified version of [connect-livereload](https://github.com/intesso/connect-livereload).
 
 
 license
