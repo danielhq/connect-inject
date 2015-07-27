@@ -108,6 +108,35 @@ You can pass in options to this call if you do not want the defaults.
 `dev` is simply the name of the server being used with the task `grunt connect:dev`. The other items in the `middleware` array are all functions that either are of the form `function (req, res, next)` like `checkForDownload` or return that like `mountFolder(connect, 'something')`.
 
 
+#### multiple injections
+You can also do multiple injections by defining a snippet inside of a rule and setting the `runAll` option to true
+
+```javascript
+{
+    runAll: true,
+    rules: [
+        {
+            match: /<head>/ig,
+            snippet: '<script src="/top_file.js"></script>',
+            fn: function(w, s) {
+                return w + s;
+            }
+        },
+        {
+            match: /<script .* src=".*\.test\.js"><\/script>/ig,
+            snippet: [
+              '<script src="/bottomFile1.js"></script>',
+              '<script src="/bottomFile2.js"></script>',
+              '<script src="/src-test/testUtils.js"></script>'
+            ]
+            fn: function(w, s) {
+                return s + w;
+            }
+        }
+    ]
+}
+```
+
 credits
 =======
 This is a slightly modified version of [connect-livereload](https://github.com/intesso/connect-livereload) all the credits go to the author.
