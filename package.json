@@ -1,7 +1,7 @@
 {
   "name": "connect-inject",
   "description": "connect middleware for adding any script to the response",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "author": "Daniel Duches <iridiumweb@gmail.com>",
   "email":"iridiumweb@gmail.com",
   "dependencies" : {},
